@@ -27,15 +27,29 @@
 
 #pragma mark - Public API
 
--(NSString*)priceDescription
+-(NSAttributedString*)priceDescription
 {
     NSInteger memValue = [self selectedRowInComponent:1];
-    NSString *memFee = memValue == 0 ? @"Free" : [NSString stringWithFormat:@"$ %ld", (long)memValue];
+    NSString *memFee = memValue == 0 ? @"Free" : [NSString stringWithFormat:@"$%ld", (long)memValue];
     
-    NSInteger guesValue = [self selectedRowInComponent:1];
-    NSString *guesFee = guesValue == 0 ? @"Free" : [NSString stringWithFormat:@"$ %ld", (long)memValue];
+    NSInteger guesValue = [self selectedRowInComponent:3];
+    NSString *guesFee = guesValue == 0 ? @"Free" : [NSString stringWithFormat:@"$%ld", (long)guesValue];
     
-    return [NSString stringWithFormat:@"Members %@ ● Guests %@", memFee, guesFee];
+    NSString *string = [NSString stringWithFormat:@"Members %@ ● Guests %@", memFee, guesFee];
+    
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:string];
+    
+    UIColor *textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    UIColor *priceColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+    
+    [attr setAttributes:@{NSForegroundColorAttributeName:priceColor} range:NSMakeRange(0, string.length)];
+    
+    NSRange range1 = [string rangeOfString:@"Members"];
+    NSRange range2 = [string rangeOfString:@"Guests"];
+    [attr setAttributes:@{NSForegroundColorAttributeName:textColor} range:range1];
+    [attr setAttributes:@{NSForegroundColorAttributeName:textColor} range:range2];
+    
+    return [[NSAttributedString alloc] initWithAttributedString:attr];
 }
 
 

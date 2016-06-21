@@ -196,7 +196,7 @@
     
     PricePickerView *ppView = (PricePickerView*)self.eventPayment.inputView;
     
-    self.eventPayment.text = [ppView priceDescription];
+    self.eventPayment.attributedText = [ppView priceDescription];
     [self.eventPayment resignFirstResponder];
 }
 
@@ -305,6 +305,21 @@
 -(void)textViewDidChange:(UITextView *)textView
 {
     [self updateCharacterCountForInputView:textView];
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    if (textView.text.length == 0) {
+        
+        if (textView == self.eventTitle) {
+            
+            [self.eventTitle setText:@"Title"];
+            
+        } else if (textView == self.eventDescription) {
+            
+            [self.eventDescription setText:@"Description"];
+        }
+    }
 }
 
 #pragma mark - UITextFieldDelegate

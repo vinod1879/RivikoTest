@@ -124,7 +124,7 @@
     [button setImage:selectedImage forState:UIControlStateNormal];
     [button setImage:deselectedImage forState:UIControlStateDisabled];
     
-    [button sizeToFit];
+    [button setBounds:CGRectMake(0, 0, 33, 44)];
     
     UIBarButtonItem *bbItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     
