@@ -10,4 +10,6 @@
 
 @interface PricePickerView : UIPickerView
 
+-(NSString*)priceDescription;
+
 @end

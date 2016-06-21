@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, CustomKeyboardAccessoryButton) {
+    
+    CustomKeyboardAccessoryButtonPrevious,
+    CustomKeyboardAccessoryButtonNext,
+    CustomKeyboardAccessoryButtonDone
+};
+
 @interface CommonKeyboardAccessoryView : UIView
+
+-(void)addTarget:(id)target selector:(SEL)selector forAccessoryButton:(CustomKeyboardAccessoryButton)accButton;
+-(void)changeAccessoryButton:(CustomKeyboardAccessoryButton)accButton toEnabled:(BOOL)enabled;
+-(void)setTitle:(NSString*)title;
 
 @end

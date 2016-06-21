@@ -120,6 +120,9 @@
                                                 <exclude reference="vg2-rj-DLl"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <outlet property="delegate" destination="ywE-uM-xcn" id="otK-v2-Agg"/>
+                                        </connections>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Description" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iE1-DH-pWM">
                                         <rect key="frame" x="32" y="355" width="311" height="33"/>
@@ -127,6 +130,9 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ywE-uM-xcn" id="k3l-ZL-593"/>
+                                        </connections>
                                     </textView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Date" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="E6a-2a-O83">
                                         <rect key="frame" x="170" y="398" width="35" height="17"/>
@@ -142,6 +148,9 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ywE-uM-xcn" id="pG0-17-OA7"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -197,11 +206,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nuf-4i-Oo1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="ZRQ-C7-kBb" userLabel="Payment Tap">
-                    <connections>
-                        <action selector="paymentTapped:" destination="ywE-uM-xcn" id="GJc-ix-cAj"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1443.5" y="313.5"/>
         </scene>

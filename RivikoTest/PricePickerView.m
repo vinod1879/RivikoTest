@@ -25,6 +25,20 @@
     return self;
 }
 
+#pragma mark - Public API
+
+-(NSString*)priceDescription
+{
+    NSInteger memValue = [self selectedRowInComponent:1];
+    NSString *memFee = memValue == 0 ? @"Free" : [NSString stringWithFormat:@"$ %ld", (long)memValue];
+    
+    NSInteger guesValue = [self selectedRowInComponent:1];
+    NSString *guesFee = guesValue == 0 ? @"Free" : [NSString stringWithFormat:@"$ %ld", (long)memValue];
+    
+    return [NSString stringWithFormat:@"Members %@ ● Guests %@", memFee, guesFee];
+}
+
+
 #pragma mark - Picker View Datasource
 
 
@@ -32,16 +46,6 @@
 {
     return 50;
 }
-
-//-(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
-//{
-//    if (component == 1 || component == 3)
-//    {
-//        return 80;
-//    }
-//    
-//    return 100;
-//}
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
