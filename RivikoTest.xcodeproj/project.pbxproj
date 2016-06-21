@@ -13,6 +13,7 @@
 		0B9F6DC21D1727DE005124C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B9F6DC01D1727DE005124C2 /* Main.storyboard */; };
 		0B9F6DC41D1727DE005124C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B9F6DC31D1727DE005124C2 /* Assets.xcassets */; };
 		0B9F6DC71D1727DE005124C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B9F6DC51D1727DE005124C2 /* LaunchScreen.storyboard */; };
+		0B9F6DD01D172B45005124C2 /* CreateEventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F6DCF1D172B45005124C2 /* CreateEventVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		0B9F6DC31D1727DE005124C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B9F6DC61D1727DE005124C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B9F6DC81D1727DE005124C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B9F6DCE1D172B45005124C2 /* CreateEventVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventVC.h; sourceTree = "<group>"; };
+		0B9F6DCF1D172B45005124C2 /* CreateEventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 				0B9F6DBB1D1727DE005124C2 /* AppDelegate.m */,
 				0B9F6DBD1D1727DE005124C2 /* ViewController.h */,
 				0B9F6DBE1D1727DE005124C2 /* ViewController.m */,
+				0B9F6DCE1D172B45005124C2 /* CreateEventVC.h */,
+				0B9F6DCF1D172B45005124C2 /* CreateEventVC.m */,
 				0B9F6DC01D1727DE005124C2 /* Main.storyboard */,
 				0B9F6DC31D1727DE005124C2 /* Assets.xcassets */,
 				0B9F6DC51D1727DE005124C2 /* LaunchScreen.storyboard */,
@@ -150,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B9F6DBF1D1727DE005124C2 /* ViewController.m in Sources */,
+				0B9F6DD01D172B45005124C2 /* CreateEventVC.m in Sources */,
 				0B9F6DBC1D1727DE005124C2 /* AppDelegate.m in Sources */,
 				0B9F6DB91D1727DE005124C2 /* main.m in Sources */,
 			);

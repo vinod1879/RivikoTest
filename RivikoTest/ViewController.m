@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CreateEventVC.h"
 
 @interface ViewController ()
 
@@ -22,6 +23,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)createEvent:(id)sender {
+    
+    CreateEventVC *createVC = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateEventVC"];
+    
+    [self.navigationController pushViewController:createVC animated:YES];
 }
 
 @end
