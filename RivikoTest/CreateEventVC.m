@@ -47,6 +47,16 @@
 -(IBAction)addPhotoTapped:(id)sender
 {
     NSLog(@"Add Photo");
+    
+    [self showImagePicker];
+}
+
+-(void)showImagePicker
+{
+    UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+    
+    [pickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    [self presentViewController:pickerController animated:YES completion:nil];
 }
 
 -(void)updateCharacterCountForInputView:(id)inputView
