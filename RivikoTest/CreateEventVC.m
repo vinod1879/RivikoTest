@@ -425,6 +425,19 @@
     return cell;
 }
 
+-(UICollectionReusableView*)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionReusableView *reuseView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"AddPhotoFooter" forIndexPath:indexPath];
+    
+    UITapGestureRecognizer *footerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addPhotoTapped:)];
+    
+    footerTap.delaysTouchesBegan = YES;
+    footerTap.numberOfTapsRequired = 1;
+    [reuseView addGestureRecognizer:footerTap];
+    
+    return reuseView;
+}
+
 #pragma mark - Event Photo Cell Delegate
 
 -(void)eventPhotoCell:(EventPhotoCell *)eventPhotoCell deletedImageWithIndex:(NSInteger)index
