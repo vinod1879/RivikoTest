@@ -232,9 +232,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Event" id="JbT-T3-1bt">
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="ZcF-eI-z8a">
-                            <color key="tintColor" red="0.80878488149847094" green="0.62486859709480125" blue="0.16508983180428136" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="ZcF-eI-z8a"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
