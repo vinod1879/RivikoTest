@@ -52,22 +52,49 @@
                                             <constraint firstAttribute="height" constant="300" id="uB0-QY-7bZ"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z4P-zX-umW">
-                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="itemSize" width="240" height="240"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="30" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="BQV-3V-nN8">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="EventPhotoCell" id="Sy2-aB-PS3" customClass="EventPhotoCell">
+                                                <rect key="frame" x="67.5" y="30" width="240" height="240"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pTq-95-T6e">
+                                                            <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dwb-WK-NWe">
+                                                            <rect key="frame" x="10" y="10" width="20" height="22"/>
+                                                            <state key="normal" image="Cancel"/>
+                                                            <connections>
+                                                                <action selector="deletePhotoTapped:" destination="Sy2-aB-PS3" eventType="touchUpInside" id="Rg1-IF-Puf"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="pTq-95-T6e" secondAttribute="bottom" id="Bk2-Ab-9CD"/>
+                                                    <constraint firstItem="Dwb-WK-NWe" firstAttribute="leading" secondItem="Sy2-aB-PS3" secondAttribute="leading" constant="10" id="Lbc-3S-u6w"/>
+                                                    <constraint firstItem="Dwb-WK-NWe" firstAttribute="top" secondItem="Sy2-aB-PS3" secondAttribute="top" constant="10" id="MQI-Kc-bZP"/>
+                                                    <constraint firstItem="pTq-95-T6e" firstAttribute="leading" secondItem="Sy2-aB-PS3" secondAttribute="leading" id="gOp-6m-IsK"/>
+                                                    <constraint firstItem="pTq-95-T6e" firstAttribute="top" secondItem="Sy2-aB-PS3" secondAttribute="top" id="i6f-OX-wNI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="pTq-95-T6e" secondAttribute="trailing" id="kT2-9Z-N3y"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="imageView" destination="pTq-95-T6e" id="ZmV-RT-PdP"/>
+                                                </connections>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="ywE-uM-xcn" id="b77-Ig-SxF"/>
+                                            <outlet property="delegate" destination="ywE-uM-xcn" id="zql-90-ym9"/>
+                                        </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRG-66-Cmf" customClass="UIControl">
                                         <rect key="frame" x="0.0" y="69" width="375" height="156"/>
@@ -231,5 +258,6 @@
     </scenes>
     <resources>
         <image name="Camera" width="34" height="25"/>
+        <image name="Cancel" width="20" height="20"/>
     </resources>
 </document>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0B03D4AB1D19595900F2C866 /* CommonKeyboardAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B03D4AA1D19595900F2C866 /* CommonKeyboardAccessoryView.m */; };
 		0B03D4AE1D1959E300F2C866 /* PricePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B03D4AD1D1959E300F2C866 /* PricePickerView.m */; };
+		0B08161E1D1AFFCA0047473F /* EventPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B08161C1D1AFFCA0047473F /* EventPhotoCell.m */; };
 		0B9F6DB91D1727DE005124C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F6DB81D1727DE005124C2 /* main.m */; };
 		0B9F6DBC1D1727DE005124C2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F6DBB1D1727DE005124C2 /* AppDelegate.m */; };
 		0B9F6DBF1D1727DE005124C2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F6DBE1D1727DE005124C2 /* ViewController.m */; };
@@ -24,6 +25,8 @@
 		0B03D4AA1D19595900F2C866 /* CommonKeyboardAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonKeyboardAccessoryView.m; sourceTree = "<group>"; };
 		0B03D4AC1D1959E300F2C866 /* PricePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PricePickerView.h; sourceTree = "<group>"; };
 		0B03D4AD1D1959E300F2C866 /* PricePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PricePickerView.m; sourceTree = "<group>"; };
+		0B08161B1D1AFFCA0047473F /* EventPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventPhotoCell.h; sourceTree = "<group>"; };
+		0B08161C1D1AFFCA0047473F /* EventPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventPhotoCell.m; sourceTree = "<group>"; };
 		0B9F6DB41D1727DE005124C2 /* RivikoTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RivikoTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9F6DB81D1727DE005124C2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0B9F6DBA1D1727DE005124C2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -92,6 +95,8 @@
 				0B03D4AD1D1959E300F2C866 /* PricePickerView.m */,
 				0B9F6DCE1D172B45005124C2 /* CreateEventVC.h */,
 				0B9F6DCF1D172B45005124C2 /* CreateEventVC.m */,
+				0B08161B1D1AFFCA0047473F /* EventPhotoCell.h */,
+				0B08161C1D1AFFCA0047473F /* EventPhotoCell.m */,
 				0B9F6DC01D1727DE005124C2 /* Main.storyboard */,
 				0B9F6DC31D1727DE005124C2 /* Assets.xcassets */,
 				0B9F6DC51D1727DE005124C2 /* LaunchScreen.storyboard */,
@@ -242,6 +247,7 @@
 				0B03D4AB1D19595900F2C866 /* CommonKeyboardAccessoryView.m in Sources */,
 				0B9F6DBF1D1727DE005124C2 /* ViewController.m in Sources */,
 				0B03D4AE1D1959E300F2C866 /* PricePickerView.m in Sources */,
+				0B08161E1D1AFFCA0047473F /* EventPhotoCell.m in Sources */,
 				0B9F6DD01D172B45005124C2 /* CreateEventVC.m in Sources */,
 				0B9F6DBC1D1727DE005124C2 /* AppDelegate.m in Sources */,
 				0B9F6DB91D1727DE005124C2 /* main.m in Sources */,

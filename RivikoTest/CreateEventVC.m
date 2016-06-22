@@ -9,10 +9,12 @@
 #import "CreateEventVC.h"
 #import "PricePickerView.h"
 #import "CommonKeyboardAccessoryView.h"
+#import "EventPhotoCell.h"
 
-@interface CreateEventVC ()<UITextViewDelegate, UITextFieldDelegate> {
+@interface CreateEventVC ()<UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, EventPhotoCellDelegate> {
     
-    NSDate *dateOfEvent;
+    NSDate                  *dateOfEvent;
+    NSArray <UIImage*>      *eventImages;
 }
 
 @property (nonatomic, weak) IBOutlet UIScrollView       *scrollView;
@@ -56,6 +58,8 @@
     UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
     
     [pickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    pickerController.delegate = self;
+    
     [self presentViewController:pickerController animated:YES completion:nil];
 }
 
@@ -210,6 +214,61 @@
     [self.eventPayment resignFirstResponder];
 }
 
+#pragma mark - UIImagePickerDelegate
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    if (image) {
+        
+        [self addEventImage:image];
+    }
+}
+
+-(void)addEventImage:(UIImage*)image
+{
+    NSMutableArray<UIImage*> *mArray = (eventImages) ? [NSMutableArray arrayWithArray:eventImages] : [NSMutableArray new];
+    
+    if (![mArray containsObject:image]) {
+        
+        [mArray addObject:image];
+        eventImages = [NSArray arrayWithArray:mArray];
+        [self reloadImages];
+    }
+}
+
+-(void)deleteImageAtIndex:(NSInteger)index
+{
+    if (eventImages && eventImages.count > index) {
+        
+        NSMutableArray<UIImage*> *mArray = [NSMutableArray arrayWithArray:eventImages];
+        
+        [mArray removeObjectAtIndex:index];
+        eventImages = [NSArray arrayWithArray:mArray];
+        
+        [self reloadImages];
+        
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+//        [self.photosCollection deleteItemsAtIndexPaths:@[indexPath]];
+    }
+}
+
+-(void)reloadImages
+{
+    [self.photosCollection setHidden:(eventImages.count == 0)];
+    [self.addPhotoView setHidden:(eventImages.count != 0)];
+    
+    [self.photosCollection reloadData];
+}
+
 #pragma mark - Configure Inputs
 
 -(void)configureKeyboardInputs
@@ -339,6 +398,38 @@
     [self editingBeganOnInputView:textField];
     
     return YES;
+}
+
+#pragma mark - UICollectionView Delegate
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return eventImages.count;
+}
+
+-(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    EventPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EventPhotoCell" forIndexPath:indexPath];
+    
+    cell.delegate = self;
+    
+    UIImage *image = [eventImages objectAtIndex:indexPath.row];
+    
+    [cell setImage:image withIndex:indexPath.row];
+    
+    return cell;
+}
+
+#pragma mark - Event Photo Cell Delegate
+
+-(void)eventPhotoCell:(EventPhotoCell *)eventPhotoCell deletedImageWithIndex:(NSInteger)index
+{
+    [self deleteImageAtIndex:index];
 }
 
 #pragma mark - Utilities
