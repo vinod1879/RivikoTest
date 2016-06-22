@@ -16,6 +16,7 @@
 		0B9F6DC41D1727DE005124C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B9F6DC31D1727DE005124C2 /* Assets.xcassets */; };
 		0B9F6DC71D1727DE005124C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B9F6DC51D1727DE005124C2 /* LaunchScreen.storyboard */; };
 		0B9F6DD01D172B45005124C2 /* CreateEventVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F6DCF1D172B45005124C2 /* CreateEventVC.m */; };
+		61DEFC22F70B87FA687732E3 /* libPods-RivikoTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8A0450CB9F3560F176FF7DA /* libPods-RivikoTest.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,9 @@
 		0B9F6DC81D1727DE005124C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B9F6DCE1D172B45005124C2 /* CreateEventVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateEventVC.h; sourceTree = "<group>"; };
 		0B9F6DCF1D172B45005124C2 /* CreateEventVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateEventVC.m; sourceTree = "<group>"; };
+		A9695CC7000D3AA6AA870395 /* Pods-RivikoTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RivikoTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RivikoTest/Pods-RivikoTest.debug.xcconfig"; sourceTree = "<group>"; };
+		EDD435E94F6D93E70E4D8502 /* Pods-RivikoTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RivikoTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-RivikoTest/Pods-RivikoTest.release.xcconfig"; sourceTree = "<group>"; };
+		F8A0450CB9F3560F176FF7DA /* libPods-RivikoTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RivikoTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,17 +46,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61DEFC22F70B87FA687732E3 /* libPods-RivikoTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07010752EC5383AF4B171694 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F8A0450CB9F3560F176FF7DA /* libPods-RivikoTest.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0B9F6DAB1D1727DE005124C2 = {
 			isa = PBXGroup;
 			children = (
 				0B9F6DB61D1727DE005124C2 /* RivikoTest */,
 				0B9F6DB51D1727DE005124C2 /* Products */,
+				A4153FF6DFC31607AB06DE57 /* Pods */,
+				07010752EC5383AF4B171694 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +109,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A4153FF6DFC31607AB06DE57 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A9695CC7000D3AA6AA870395 /* Pods-RivikoTest.debug.xcconfig */,
+				EDD435E94F6D93E70E4D8502 /* Pods-RivikoTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,9 +125,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B9F6DCB1D1727DE005124C2 /* Build configuration list for PBXNativeTarget "RivikoTest" */;
 			buildPhases = (
+				433197E1EEBF675156F3FEF6 /* 📦 Check Pods Manifest.lock */,
 				0B9F6DB01D1727DE005124C2 /* Sources */,
 				0B9F6DB11D1727DE005124C2 /* Frameworks */,
 				0B9F6DB21D1727DE005124C2 /* Resources */,
+				3C5FC884329D39419C663BB2 /* 📦 Embed Pods Frameworks */,
+				0D41D3D562351EB980D38B3D /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -158,6 +185,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D41D3D562351EB980D38B3D /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivikoTest/Pods-RivikoTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3C5FC884329D39419C663BB2 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RivikoTest/Pods-RivikoTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		433197E1EEBF675156F3FEF6 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0B9F6DB01D1727DE005124C2 /* Sources */ = {
@@ -279,6 +354,7 @@
 		};
 		0B9F6DCC1D1727DE005124C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9695CC7000D3AA6AA870395 /* Pods-RivikoTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RivikoTest/Info.plist;
@@ -290,6 +366,7 @@
 		};
 		0B9F6DCD1D1727DE005124C2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EDD435E94F6D93E70E4D8502 /* Pods-RivikoTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RivikoTest/Info.plist;
