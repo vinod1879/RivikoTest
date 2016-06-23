@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <AWSCore/AWSCore.h>
 
 @interface AppDelegate ()
 
@@ -19,6 +20,14 @@
     
     [[UINavigationBar appearance] setTintColor:[UIColor orangeColor]];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackTranslucent];
+    
+    AWSStaticCredentialsProvider *credentialsProvider = [[AWSStaticCredentialsProvider alloc] initWithAccessKey:@"AKIAJWHVAUG4XR3LTEGA"
+                                                                                                      secretKey:@"TufnHtuv3h/5a8R4MkpheuHYz3AwIjzCvdyUEqnp"];
+    
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1
+                                                                         credentialsProvider:credentialsProvider];
+    
+    AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;
     
     return YES;
 }

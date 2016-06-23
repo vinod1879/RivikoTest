@@ -7,6 +7,7 @@
 //
 
 #import "PricePickerView.h"
+#import "Utility.h"
 
 @interface PricePickerView ()<UIPickerViewDataSource, UIPickerViewDelegate>
 
@@ -30,10 +31,10 @@
 -(NSAttributedString*)priceDescription
 {
     NSInteger memValue = [self selectedRowInComponent:1];
-    NSString *memFee = memValue == 0 ? @"Free" : [NSString stringWithFormat:@"$%ld", (long)memValue];
+    NSString *memFee = [Utility descriptionForPrice:memValue];
     
     NSInteger guesValue = [self selectedRowInComponent:3];
-    NSString *guesFee = guesValue == 0 ? @"Free" : [NSString stringWithFormat:@"$%ld", (long)guesValue];
+    NSString *guesFee = [Utility descriptionForPrice:guesValue];
     
     NSString *string = [NSString stringWithFormat:@"Members %@ ● Guests %@", memFee, guesFee];
     

@@ -10,6 +10,7 @@
 #import "PricePickerView.h"
 #import "CommonKeyboardAccessoryView.h"
 #import "EventPhotoCell.h"
+#import "Utility.h"
 
 @interface CreateEventVC ()<UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, EventPhotoCellDelegate> {
     
@@ -195,8 +196,8 @@
     {
         dateOfEvent = [datePicker date];
         
-        NSString *calDate = [self stringByFormattingDate:dateOfEvent inFormat:@"MMM d"];
-        NSString *calTime = [self stringByFormattingDate:dateOfEvent inFormat:@"h:mm a"];
+        NSString *calDate = [Utility stringByFormattingDate:dateOfEvent inFormat:@"MMM d"];
+        NSString *calTime = [Utility stringByFormattingDate:dateOfEvent inFormat:@"h:mm a"];
         NSString *dStr = [NSString stringWithFormat:@"%@ at %@", calDate, calTime];
         
         self.eventDate.text = dStr;
@@ -448,18 +449,6 @@
 -(void)eventPhotoCell:(EventPhotoCell *)eventPhotoCell deletedImageWithIndex:(NSInteger)index
 {
     [self deleteImageAtIndex:index];
-}
-
-#pragma mark - Utilities
-
--(NSString*)stringByFormattingDate:(NSDate*)date inFormat:(NSString*)format
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    
-    dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-    dateFormatter.dateFormat = format;
-    
-    return [dateFormatter stringFromDate:date];
 }
 
 @end
