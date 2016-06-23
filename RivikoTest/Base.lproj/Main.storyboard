@@ -124,12 +124,17 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="43P-as-MXP"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="kGq-XN-8Vf">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="kiW-wI-S03" secondAttribute="trailing" id="5Ka-SK-1wG"/>
                             <constraint firstItem="kiW-wI-S03" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6IC-7t-EXd"/>
                             <constraint firstItem="kiW-wI-S03" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ogb-u5-uTL"/>
+                            <constraint firstItem="kGq-XN-8Vf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vso-wg-fuo"/>
+                            <constraint firstItem="kGq-XN-8Vf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="nuV-hG-i4f"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="kiW-wI-S03" secondAttribute="bottom" id="o0f-1u-WNm"/>
                         </constraints>
                     </view>
@@ -147,6 +152,7 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="kGq-XN-8Vf" id="VkY-Le-bhv"/>
                         <outlet property="eventsTable" destination="kiW-wI-S03" id="xp5-I8-Qfb"/>
                     </connections>
                 </viewController>
@@ -278,14 +284,14 @@
                                         <rect key="frame" x="16" y="315" width="343" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="vg2-rj-DLl"/>
+                                            <constraint firstAttribute="height" constant="40" id="NsM-n7-peZ"/>
                                         </constraints>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                         <variation key="default">
                                             <mask key="constraints">
-                                                <exclude reference="vg2-rj-DLl"/>
+                                                <exclude reference="NsM-n7-peZ"/>
                                             </mask>
                                         </variation>
                                         <connections>
@@ -320,6 +326,9 @@
                                             <outlet property="delegate" destination="ywE-uM-xcn" id="pG0-17-OA7"/>
                                         </connections>
                                     </textField>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="50C-mW-goz">
+                                        <rect key="frame" x="169" y="214" width="37" height="37"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="dme-D7-Qs0" secondAttribute="trailing" constant="16" id="4rG-gv-fJV"/>
@@ -340,6 +349,8 @@
                                     <constraint firstItem="E6a-2a-O83" firstAttribute="top" secondItem="iE1-DH-pWM" secondAttribute="bottom" constant="10" id="iFv-Tz-aIF"/>
                                     <constraint firstItem="nRG-66-Cmf" firstAttribute="leading" secondItem="G4P-Xa-1Ap" secondAttribute="leading" id="l32-GD-nqA"/>
                                     <constraint firstItem="iE1-DH-pWM" firstAttribute="top" secondItem="dme-D7-Qs0" secondAttribute="bottom" id="pTC-3h-Tvm"/>
+                                    <constraint firstItem="50C-mW-goz" firstAttribute="centerX" secondItem="G4P-Xa-1Ap" secondAttribute="centerX" id="pdD-01-PEE"/>
+                                    <constraint firstItem="50C-mW-goz" firstAttribute="centerY" secondItem="G4P-Xa-1Ap" secondAttribute="centerY" id="rpe-Au-lx4"/>
                                     <constraint firstItem="E6a-2a-O83" firstAttribute="centerX" secondItem="iE1-DH-pWM" secondAttribute="centerX" id="u1J-H3-cc8"/>
                                     <constraint firstItem="bc3-MD-90b" firstAttribute="top" secondItem="E6a-2a-O83" secondAttribute="bottom" constant="15" id="yMZ-43-5cM"/>
                                 </constraints>
@@ -365,6 +376,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="529"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="50C-mW-goz" id="zew-qo-Qio"/>
                         <outlet property="addPhotoView" destination="nRG-66-Cmf" id="t8Y-aw-kpz"/>
                         <outlet property="eventDate" destination="E6a-2a-O83" id="3ci-yd-CJa"/>
                         <outlet property="eventDescription" destination="iE1-DH-pWM" id="gGk-BR-vA6"/>

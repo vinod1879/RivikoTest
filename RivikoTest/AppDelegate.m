@@ -18,7 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [[UINavigationBar appearance] setTintColor:[UIColor orangeColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:255/255.0f green:180/255.0f blue:70/255.0f alpha:1.0]];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlackTranslucent];
     
     AWSStaticCredentialsProvider *credentialsProvider = [[AWSStaticCredentialsProvider alloc] initWithAccessKey:@"AKIAJWHVAUG4XR3LTEGA"

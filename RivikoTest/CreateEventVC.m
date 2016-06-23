@@ -22,13 +22,14 @@
     NSString                *guestFee;
 }
 
-@property (nonatomic, weak) IBOutlet UIScrollView       *scrollView;
-@property (nonatomic, weak) IBOutlet UIControl          *addPhotoView;
-@property (nonatomic, weak) IBOutlet UICollectionView   *photosCollection;
-@property (nonatomic, weak) IBOutlet UITextView         *eventTitle;
-@property (nonatomic, weak) IBOutlet UITextView         *eventDescription;
-@property (nonatomic, weak) IBOutlet UITextField        *eventDate;
-@property (nonatomic, weak) IBOutlet UITextField        *eventPayment;
+@property (nonatomic, weak) IBOutlet UIScrollView               *scrollView;
+@property (nonatomic, weak) IBOutlet UIControl                  *addPhotoView;
+@property (nonatomic, weak) IBOutlet UICollectionView           *photosCollection;
+@property (nonatomic, weak) IBOutlet UITextView                 *eventTitle;
+@property (nonatomic, weak) IBOutlet UITextView                 *eventDescription;
+@property (nonatomic, weak) IBOutlet UITextField                *eventDate;
+@property (nonatomic, weak) IBOutlet UITextField                *eventPayment;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView    *activityIndicator;
 
 @end
 
@@ -66,11 +67,13 @@
     
     if ([event isValid]) {
         
+        [self.activityIndicator startAnimating];
         [NetworkHelper addEvent:event completion:^(BOOL success, NSString *message) {
             
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
+                [self.activityIndicator stopAnimating];
                 [self handleAddEventSuccess:success message:message];
             });
         }];
@@ -158,6 +161,9 @@
 {
     CommonKeyboardAccessoryView *kbAccessory = (CommonKeyboardAccessoryView*)self.eventDate.inputAccessoryView;
     
+    [kbAccessory changeAccessoryButton:CustomKeyboardAccessoryButtonPrevious toEnabled:YES];
+    [kbAccessory changeAccessoryButton:CustomKeyboardAccessoryButtonNext toEnabled:YES];
+    
     if (inputView == self.eventDate ) {
         
         [kbAccessory setTitle:@"set date and time"];
@@ -165,8 +171,11 @@
     } else if (inputView == self.eventPayment ) {
         
         [kbAccessory setTitle:@"set event fees"];
+        [kbAccessory changeAccessoryButton:CustomKeyboardAccessoryButtonNext toEnabled:NO];
         
     } else if (inputView == self.eventTitle) {
+        
+        [kbAccessory changeAccessoryButton:CustomKeyboardAccessoryButtonPrevious toEnabled:NO];
         
         if ([self.eventTitle.text isEqualToString:@"Title"]) {
             
@@ -181,6 +190,8 @@
         
     } else if (inputView == self.eventDescription) {
         
+        
+        [self.eventDescription setFont:[UIFont systemFontOfSize:17.0f]];
         if ([self.eventDescription.text isEqualToString:@"Description"]) {
             
             self.eventDescription.text = nil;
@@ -223,6 +234,7 @@
         
     } else if ([self.eventDate isFirstResponder]) {
         
+        [self dateTappedDone];
         [self.eventPayment becomeFirstResponder];
     }
 }
@@ -232,10 +244,12 @@
     if ([self.eventDate isFirstResponder]) {
         
         [self dateTappedDone];
+        [self.eventDate resignFirstResponder];
         
     } else if ([self.eventPayment isFirstResponder]) {
         
         [self paymentTappedDone];
+        [self.eventPayment resignFirstResponder];
         
     } else {
         
@@ -258,7 +272,6 @@
         NSString *dStr = [NSString stringWithFormat:@"%@ at %@", calDate, calTime];
         
         self.eventDate.text = dStr;
-        [self.eventDate resignFirstResponder];
     }
 }
 
@@ -271,8 +284,6 @@
     self.eventPayment.attributedText = [ppView priceDescription];
     memberFee   = [Utility descriptionForPrice:[ppView membersFeeValue]];
     guestFee    = [Utility descriptionForPrice:[ppView guestsFeeValue]];
-    
-    [self.eventPayment resignFirstResponder];
 }
 
 #pragma mark - UIImagePickerDelegate
@@ -414,6 +425,10 @@
     
     if (textView == self.eventTitle) {
         
+        if( [text rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]].location != NSNotFound ) {
+            return NO;
+        }
+        
         if (replacement.length <= TITLE_CHAR_LIMIT) {
             
             return YES;
@@ -456,6 +471,11 @@
             
             [self.eventDescription setText:@"Description"];
         }
+    }
+    
+    if (textView == self.eventDescription) {
+        
+        [self.eventDescription setFont:[UIFont systemFontOfSize:14.0f]];
     }
 }
 

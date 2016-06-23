@@ -16,7 +16,8 @@
 
 //MARK:- Outlets
 
-@property (nonatomic, weak) IBOutlet UITableView *eventsTable;
+@property (nonatomic, weak) IBOutlet UITableView                *eventsTable;
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView    *activityIndicator;
 
 //MARK:- Properties
 
@@ -29,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"Events";
     self.eventsTable.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0.1, 0.1)];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     [self fetchEvents];
@@ -41,6 +43,7 @@
 -(void)fetchEvents
 {
     [self.eventsTable setHidden:YES];
+    [self.activityIndicator startAnimating];
     
     [NetworkHelper fetchEventsWithPageNumber:1 completion:^(BOOL success, NSArray<Event *> *events) {
        
@@ -48,6 +51,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
+            [self.activityIndicator stopAnimating];
             [self.eventsTable setHidden:NO];
             [self.eventsTable reloadData];
         });
