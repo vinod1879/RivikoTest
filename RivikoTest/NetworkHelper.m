@@ -32,8 +32,6 @@
         
         if (task.result) {
             
-            NSLog(@"Result: %@", task.result);
-            
             NSDictionary *result = task.result;
             
             if ([[result objectForKey:@"status"] isEqualToString:@"success"]) {
@@ -62,7 +60,7 @@
     }];
 }
 
-+(void)addEvent:(Event*)event completion:(void (^)(BOOL success, NSString *eventId))completion
++(void)addEvent:(Event*)event completion:(void (^)(BOOL success, NSString *message))completion
 {
     AWSLambdaInvoker *lambdaInvoker = [AWSLambdaInvoker defaultLambdaInvoker];
     
@@ -79,13 +77,22 @@
         
         if (task.result) {
             
-            NSLog(@"Result: %@", task.result);
+            NSDictionary    *result     = task.result;
+            NSDictionary    *data       = [result objectForKey:@"data"];
+            NSString        *message    = [data objectForKey:@"message"];
             
-            NSString *eventId = task.result;
+            if ([[result objectForKey:@"status"] isEqualToString:@"success"]) {
+                
+                NSString *eventId = [data objectForKey:@"eventId"];
+                [self saveImages:event.images withEventID:eventId];
+                
+                completion(YES, message);
+                
+            } else {
+                
+                completion(NO, message);
+            }
             
-            [self saveImages:event.images withEventID:eventId];
-            
-            completion(YES, eventId);
             
         } else {
             
@@ -104,7 +111,7 @@
         AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
         
         NSData      *PNGData    = UIImagePNGRepresentation(image);
-        NSString    *fileName   = [NSString stringWithFormat:@"event-%@-image-%ld", eventID, (long)index];
+        NSString    *fileName   = [NSString stringWithFormat:@"event-%@-image-%ld.png", eventID, (long)index];
         
         [transferUtility uploadData:PNGData
                              bucket:@"cdn.eventapp.riviko.com"
@@ -113,6 +120,10 @@
                          expression:nil
                    completionHander:^(AWSS3TransferUtilityUploadTask * _Nonnull task, NSError * _Nullable error) {
                        
+                       if (!error) {
+                           
+                           [self addImageName:fileName toEventID:eventID];
+                       }
                    }];
     }
 }

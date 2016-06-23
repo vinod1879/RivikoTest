@@ -66,11 +66,42 @@
     
     if ([event isValid]) {
         
-        [NetworkHelper addEvent:event completion:^(BOOL success, NSString *eventId) {
+        [NetworkHelper addEvent:event completion:^(BOOL success, NSString *message) {
             
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self handleAddEventSuccess:success message:message];
+            });
         }];
     }
+}
+
+-(void)handleAddEventSuccess:(BOOL)success message:(NSString*)message
+{
+    NSString *title;
+    UIAlertAction *action;
     
+    if (success) {
+        
+        title = @"Success!";
+        
+        action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }];
+        
+    } else {
+        
+        title = @"Error :(";
+        
+        action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+    }
+    
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    [controller addAction:action];
+    
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 -(IBAction)addPhotoTapped:(id)sender
