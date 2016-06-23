@@ -13,6 +13,7 @@
 		0B0816251D1B31CA0047473F /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0816241D1B31CA0047473F /* Event.m */; };
 		0B0816291D1B33380047473F /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0816281D1B33380047473F /* Utility.m */; };
 		0B08162D1D1B42ED0047473F /* NetworkHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B08162C1D1B42ED0047473F /* NetworkHelper.m */; };
+		0B0816301D1C1BF40047473F /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B08162F1D1C1BF40047473F /* EventCell.m */; };
 		0B9F6DB91D1727DE005124C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F6DB81D1727DE005124C2 /* main.m */; };
 		0B9F6DBC1D1727DE005124C2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F6DBB1D1727DE005124C2 /* AppDelegate.m */; };
 		0B9F6DBF1D1727DE005124C2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9F6DBE1D1727DE005124C2 /* ViewController.m */; };
@@ -36,6 +37,8 @@
 		0B0816281D1B33380047473F /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		0B08162B1D1B42ED0047473F /* NetworkHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkHelper.h; sourceTree = "<group>"; };
 		0B08162C1D1B42ED0047473F /* NetworkHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkHelper.m; sourceTree = "<group>"; };
+		0B08162E1D1C1BF40047473F /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
+		0B08162F1D1C1BF40047473F /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
 		0B9F6DB41D1727DE005124C2 /* RivikoTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RivikoTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9F6DB81D1727DE005124C2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0B9F6DBA1D1727DE005124C2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 				0B03D4AD1D1959E300F2C866 /* PricePickerView.m */,
 				0B08161B1D1AFFCA0047473F /* EventPhotoCell.h */,
 				0B08161C1D1AFFCA0047473F /* EventPhotoCell.m */,
+				0B08162E1D1C1BF40047473F /* EventCell.h */,
+				0B08162F1D1C1BF40047473F /* EventCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 				0B03D4AE1D1959E300F2C866 /* PricePickerView.m in Sources */,
 				0B08161E1D1AFFCA0047473F /* EventPhotoCell.m in Sources */,
 				0B08162D1D1B42ED0047473F /* NetworkHelper.m in Sources */,
+				0B0816301D1C1BF40047473F /* EventCell.m in Sources */,
 				0B0816291D1B33380047473F /* Utility.m in Sources */,
 				0B0816251D1B31CA0047473F /* Event.m in Sources */,
 				0B9F6DD01D172B45005124C2 /* CreateEventVC.m in Sources */,

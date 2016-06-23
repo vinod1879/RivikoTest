@@ -17,6 +17,7 @@
 @property (nonatomic) NSString              *memberFee;
 @property (nonatomic) NSString              *guestFee;
 @property (nonatomic) NSArray<UIImage*>     *images;
+@property (nonatomic) NSArray<NSString*>    *imagePaths;
 
 -(NSDictionary*)dictionaryRepresentation;
 -(instancetype)initWithDictionary:(NSDictionary*)dictionary;

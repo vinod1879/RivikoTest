@@ -12,6 +12,8 @@
 
 +(NSString*)stringByFormattingDate:(NSDate*)date inFormat:(NSString*)format;
 +(NSDate*)dateFromString:(NSString*)string inFormat:(NSString*)format;
++(NSString*)friendlyDescriptionOfDate:(NSDate*)date;
 +(NSString*)descriptionForPrice:(NSInteger)price;
++(NSAttributedString*)attributedDescriptionForMemberFee:(NSString*)memFee guestFee:(NSString*)guestFee;
 
 @end

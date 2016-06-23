@@ -33,6 +33,7 @@
     self.startTime          = [Utility dateFromString:dateStr inFormat:@"yyyy-MM-dd HH:mm:ss"];
     self.memberFee          = [dictionary objectForKey:@"memberFee"];
     self.guestFee           = [dictionary objectForKey:@"guestFee"];
+    self.imagePaths         = [dictionary objectForKey:@"images"];
     
     return self;
 }
