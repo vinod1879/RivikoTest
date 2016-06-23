@@ -16,8 +16,8 @@
     return @{@"eventName": self.eventName,
              @"eventDescription": self.eventDescription,
              @"eventStartTime": [Utility stringByFormattingDate:self.startTime inFormat:@"yyyy-MM-dd HH:mm:ss"],
-             @"eventMemberFee": [Utility descriptionForPrice:self.memberFee],
-             @"eventGuestFee": [Utility descriptionForPrice:self.guestFee]};
+             @"eventMemberFee": [Utility descriptionForPrice:self.memberFee.integerValue],
+             @"eventGuestFee": [Utility descriptionForPrice:self.guestFee.integerValue]};
 }
 
 -(instancetype)initWithDictionary:(NSDictionary*)dictionary
@@ -31,10 +31,27 @@
     self.eventDescription   = [dictionary objectForKey:@"eventDescription"];
     
     self.startTime          = [Utility dateFromString:dateStr inFormat:@"yyyy-MM-dd HH:mm:ss"];
-    self.memberFee          = [[dictionary objectForKey:@"eventMemberFee"] integerValue];
-    self.guestFee           = [[dictionary objectForKey:@"eventGuestFee"] integerValue];
+    self.memberFee          = [NSNumber numberWithInteger:[[dictionary objectForKey:@"eventMemberFee"] integerValue]];
+    self.guestFee           = [NSNumber numberWithInteger:[[dictionary objectForKey:@"eventGuestFee"] integerValue]];
     
     return self;
+}
+
+-(BOOL)isValid
+{
+    if (self.eventName.length == 0 ||
+        self.eventDescription.length == 0 ||
+        !self.startTime ||
+        !self.memberFee ||
+        !self.guestFee ||
+        !self.images ||
+        self.images.count == 0) {
+        
+            return NO;
+        }
+    
+    
+    return YES;;
 }
 
 @end

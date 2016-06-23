@@ -11,5 +11,7 @@
 @interface PricePickerView : UIPickerView
 
 -(NSAttributedString*)priceDescription;
+-(NSInteger)membersFeeValue;
+-(NSInteger)guestsFeeValue;
 
 @end

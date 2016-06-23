@@ -53,6 +53,19 @@
     return [[NSAttributedString alloc] initWithAttributedString:attr];
 }
 
+-(NSInteger)membersFeeValue
+{
+    NSInteger memValue = [self selectedRowInComponent:1];
+    
+    return memValue;
+}
+
+-(NSInteger)guestsFeeValue
+{
+    NSInteger guesValue = [self selectedRowInComponent:3];
+    
+    return guesValue;
+}
 
 #pragma mark - Picker View Datasource
 

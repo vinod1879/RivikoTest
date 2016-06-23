@@ -232,7 +232,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Event" id="JbT-T3-1bt">
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="ZcF-eI-z8a"/>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="ZcF-eI-z8a">
+                            <connections>
+                                <action selector="addEventTapped:" destination="ywE-uM-xcn" id="VNi-fz-ZKp"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

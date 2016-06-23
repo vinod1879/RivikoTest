@@ -73,7 +73,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		0B0816201D1B2D7E0047473F /* Screens */ = {
+		0B0816201D1B2D7E0047473F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				0B9F6DBD1D1727DE005124C2 /* ViewController.h */,
@@ -81,7 +81,7 @@
 				0B9F6DCE1D172B45005124C2 /* CreateEventVC.h */,
 				0B9F6DCF1D172B45005124C2 /* CreateEventVC.m */,
 			);
-			name = Screens;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		0B0816211D1B319B0047473F /* Views */ = {
@@ -149,7 +149,7 @@
 				0B0816221D1B31B40047473F /* Models */,
 				0B08162A1D1B42CE0047473F /* AWS */,
 				0B0816211D1B319B0047473F /* Views */,
-				0B0816201D1B2D7E0047473F /* Screens */,
+				0B0816201D1B2D7E0047473F /* ViewControllers */,
 				0B9F6DBA1D1727DE005124C2 /* AppDelegate.h */,
 				0B9F6DBB1D1727DE005124C2 /* AppDelegate.m */,
 				0B9F6DC01D1727DE005124C2 /* Main.storyboard */,

@@ -11,11 +11,15 @@
 #import "CommonKeyboardAccessoryView.h"
 #import "EventPhotoCell.h"
 #import "Utility.h"
+#import "NetworkHelper.h"
+#import "Event.h"
 
 @interface CreateEventVC ()<UITextViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, EventPhotoCellDelegate> {
     
     NSDate                  *dateOfEvent;
     NSArray <UIImage*>      *eventImages;
+    NSNumber                *memberFee;
+    NSNumber                *guestFee;
 }
 
 @property (nonatomic, weak) IBOutlet UIScrollView       *scrollView;
@@ -46,6 +50,28 @@
 }
 
 #pragma mark - Events
+
+-(IBAction)addEventTapped:(id)sender
+{
+    [self.view endEditing:YES];
+    
+    Event *event = [[Event alloc] init];
+    
+    event.eventName         = self.eventTitle.text;
+    event.eventDescription  = self.eventDescription.text;
+    event.startTime         = dateOfEvent;
+    event.memberFee         = memberFee;
+    event.guestFee          = guestFee;
+    event.images            = eventImages;
+    
+    if ([event isValid]) {
+        
+        [NetworkHelper addEvent:event completion:^(BOOL success, NSInteger eventId) {
+            
+        }];
+    }
+    
+}
 
 -(IBAction)addPhotoTapped:(id)sender
 {
@@ -212,6 +238,9 @@
     PricePickerView *ppView = (PricePickerView*)self.eventPayment.inputView;
     
     self.eventPayment.attributedText = [ppView priceDescription];
+    memberFee   = [NSNumber numberWithInteger:[ppView membersFeeValue]];
+    guestFee    = [NSNumber numberWithInteger:[ppView guestsFeeValue]];
+    
     [self.eventPayment resignFirstResponder];
 }
 
@@ -384,6 +413,8 @@
 
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
+    textView.text = [textView.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
     if (textView.text.length == 0) {
         
         if (textView == self.eventTitle) {

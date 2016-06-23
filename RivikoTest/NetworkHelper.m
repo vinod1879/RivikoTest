@@ -10,6 +10,7 @@
 
 #import "Event.h"
 #import <AWSLambda/AWSLambda.h>
+#import <AWSS3/AWSS3.h>
 
 @implementation NetworkHelper
 
@@ -19,7 +20,7 @@
     
     NSDictionary *parameters = @{@"page" : @(pNumber)};
     
-    [[lambdaInvoker invokeFunction:@"event-getEvents"
+    [[lambdaInvoker invokeFunction:@"event-getEvent"
                         JSONObject:parameters] continueWithBlock:^id(AWSTask *task) {
         if (task.error) {
             NSLog(@"Error: %@", task.error);
@@ -50,13 +51,13 @@
     }];
 }
 
-+(void)addEent:(Event*)event completion:(void (^)(BOOL success, NSInteger eventId))completion
++(void)addEvent:(Event*)event completion:(void (^)(BOOL success, NSInteger eventId))completion
 {
     AWSLambdaInvoker *lambdaInvoker = [AWSLambdaInvoker defaultLambdaInvoker];
     
     NSDictionary *parameters = [event dictionaryRepresentation];
     
-    [[lambdaInvoker invokeFunction:@"event-getEvents"
+    [[lambdaInvoker invokeFunction:@"event-addEvent"
                         JSONObject:parameters] continueWithBlock:^id(AWSTask *task) {
         if (task.error) {
             NSLog(@"Error: %@", task.error);
@@ -71,12 +72,47 @@
             
             NSInteger eventId = (NSInteger)task.result;
             
+            [self saveImages:event.images withEventID:eventId];
+            
             completion(YES, eventId);
             
         } else {
             
             completion(NO, 0);
         }
+        return nil;
+    }];
+}
+
++(void)saveImages:(NSArray<UIImage*>*)images withEventID:(NSInteger)eventID
+{
+    
+    AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
+    uploadRequest.bucket = @"cdn.eventapp.riviko.com";
+    uploadRequest.key = @"myTestFile.txt";
+    uploadRequest.body = @"";
+    
+    
+    
+    AWSLambdaInvoker *lambdaInvoker = [AWSLambdaInvoker defaultLambdaInvoker];
+    
+    NSDictionary *parameters = @{@"page" : @(1)};
+    
+    [[lambdaInvoker invokeFunction:@"event-getEvent"
+                        JSONObject:parameters] continueWithBlock:^id(AWSTask *task) {
+        if (task.error) {
+            NSLog(@"Error: %@", task.error);
+        }
+        if (task.exception) {
+            NSLog(@"Exception: %@", task.exception);
+        }
+        
+        if (task.result) {
+            
+            NSLog(@"Result: %@", task.result);
+            
+        }
+        
         return nil;
     }];
 }
