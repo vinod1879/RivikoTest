@@ -29,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.eventsTable.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0.1, 0.1)];
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     [self fetchEvents];
 }

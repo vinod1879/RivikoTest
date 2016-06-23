@@ -9,6 +9,7 @@
 #import "EventCell.h"
 #import "Event.h"
 #import "Utility.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface EventCell ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -64,8 +65,7 @@
         
         NSString *path = [self.shownEvent.imagePaths objectAtIndex:indexPath.row];
         
-        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:path]];
-        [imageView setImage:[UIImage imageWithData:imageData]];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:path]];
     }
     
     return cell;
