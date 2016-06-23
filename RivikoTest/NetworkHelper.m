@@ -22,6 +22,7 @@
     
     [[lambdaInvoker invokeFunction:@"event-getEvent"
                         JSONObject:parameters] continueWithBlock:^id(AWSTask *task) {
+        
         if (task.error) {
             NSLog(@"Error: %@", task.error);
         }
@@ -32,16 +33,26 @@
         if (task.result) {
             
             NSLog(@"Result: %@", task.result);
-            NSArray *dictionaries = task.result;
             
-            NSMutableArray<Event*> *events = [NSMutableArray new];
+            NSDictionary *result = task.result;
             
-            for(NSDictionary *dict in dictionaries) {
+            if ([[result objectForKey:@"status"] isEqualToString:@"success"]) {
                 
-                [events addObject:[[Event alloc] initWithDictionary:dict]];
-            }
-            
-            completion(YES, [NSArray arrayWithArray:events]);
+                NSArray *dictionaries = [result objectForKey:@"data"];
+                
+                NSMutableArray<Event*> *events = [NSMutableArray new];
+                
+                for(NSDictionary *dict in dictionaries) {
+                    
+                    [events addObject:[[Event alloc] initWithDictionary:dict]];
+                }
+                
+                completion(YES, [NSArray arrayWithArray:events]);
+                
+            } else {
+                
+                completion(NO, nil);
+            }            
             
         } else {
             
@@ -51,7 +62,7 @@
     }];
 }
 
-+(void)addEvent:(Event*)event completion:(void (^)(BOOL success, NSInteger eventId))completion
++(void)addEvent:(Event*)event completion:(void (^)(BOOL success, NSString *eventId))completion
 {
     AWSLambdaInvoker *lambdaInvoker = [AWSLambdaInvoker defaultLambdaInvoker];
     
@@ -70,7 +81,7 @@
             
             NSLog(@"Result: %@", task.result);
             
-            NSInteger eventId = (NSInteger)task.result;
+            NSString *eventId = task.result;
             
             [self saveImages:event.images withEventID:eventId];
             
@@ -84,21 +95,36 @@
     }];
 }
 
-+(void)saveImages:(NSArray<UIImage*>*)images withEventID:(NSInteger)eventID
++(void)saveImages:(NSArray<UIImage*>*)images withEventID:(NSString*)eventID
 {
-    
-    AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-    uploadRequest.bucket = @"cdn.eventapp.riviko.com";
-    uploadRequest.key = @"myTestFile.txt";
-    uploadRequest.body = @"";
-    
-    
-    
+    for (NSInteger index=0; index < images.count; index++) {
+        
+        UIImage *image = images[index];
+        
+        AWSS3TransferUtility *transferUtility = [AWSS3TransferUtility defaultS3TransferUtility];
+        
+        NSData      *PNGData    = UIImagePNGRepresentation(image);
+        NSString    *fileName   = [NSString stringWithFormat:@"event-%@-image-%ld", eventID, (long)index];
+        
+        [transferUtility uploadData:PNGData
+                             bucket:@"cdn.eventapp.riviko.com"
+                                key:fileName
+                        contentType:@"image/png"
+                         expression:nil
+                   completionHander:^(AWSS3TransferUtilityUploadTask * _Nonnull task, NSError * _Nullable error) {
+                       
+                   }];
+    }
+}
+
++(void)addImageName:(NSString*)imageName toEventID:(NSString*)eventID
+{
     AWSLambdaInvoker *lambdaInvoker = [AWSLambdaInvoker defaultLambdaInvoker];
     
-    NSDictionary *parameters = @{@"page" : @(1)};
+    NSDictionary *parameters = @{@"imageName" : imageName,
+                                 @"eventId": eventID};
     
-    [[lambdaInvoker invokeFunction:@"event-getEvent"
+    [[lambdaInvoker invokeFunction:@"event-addImage"
                         JSONObject:parameters] continueWithBlock:^id(AWSTask *task) {
         if (task.error) {
             NSLog(@"Error: %@", task.error);

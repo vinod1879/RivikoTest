@@ -14,6 +14,6 @@
 
 +(void)fetchEventsWithPageNumber:(NSInteger)pNumber completion:(void (^)(BOOL success, NSArray<Event*>* events))completion;
 
-+(void)addEvent:(Event*)event completion:(void (^)(BOOL success, NSInteger eventId))completion;
++(void)addEvent:(Event*)event completion:(void (^)(BOOL success, NSString *eventId))completion;
 
 @end

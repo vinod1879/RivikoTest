@@ -24,7 +24,7 @@
     AWSStaticCredentialsProvider *credentialsProvider = [[AWSStaticCredentialsProvider alloc] initWithAccessKey:@"AKIAJWHVAUG4XR3LTEGA"
                                                                                                       secretKey:@"TufnHtuv3h/5a8R4MkpheuHYz3AwIjzCvdyUEqnp"];
     
-    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSWest2
                                                                          credentialsProvider:credentialsProvider];
     
     AWSServiceManager.defaultServiceManager.defaultServiceConfiguration = configuration;

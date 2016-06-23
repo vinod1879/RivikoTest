@@ -25,14 +25,14 @@
     self = [super init];
     
     
-    NSString *dateStr = [dictionary objectForKey:@"eventStartTime"];
+    NSString *dateStr = [dictionary objectForKey:@"startTime"];
     
-    self.eventName          = [dictionary objectForKey:@"eventName"];
-    self.eventDescription   = [dictionary objectForKey:@"eventDescription"];
+    self.eventName          = [dictionary objectForKey:@"title"];
+    self.eventDescription   = [dictionary objectForKey:@"description"];
     
     self.startTime          = [Utility dateFromString:dateStr inFormat:@"yyyy-MM-dd HH:mm:ss"];
-    self.memberFee          = [NSNumber numberWithInteger:[[dictionary objectForKey:@"eventMemberFee"] integerValue]];
-    self.guestFee           = [NSNumber numberWithInteger:[[dictionary objectForKey:@"eventGuestFee"] integerValue]];
+    self.memberFee          = [dictionary objectForKey:@"memberFee"];
+    self.guestFee           = [dictionary objectForKey:@"guestFee"];
     
     return self;
 }

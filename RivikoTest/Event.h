@@ -14,8 +14,8 @@
 @property (nonatomic) NSString              *eventName;
 @property (nonatomic) NSString              *eventDescription;
 @property (nonatomic) NSDate                *startTime;
-@property (nonatomic) NSNumber              *memberFee;
-@property (nonatomic) NSNumber              *guestFee;
+@property (nonatomic) NSString              *memberFee;
+@property (nonatomic) NSString              *guestFee;
 @property (nonatomic) NSArray<UIImage*>     *images;
 
 -(NSDictionary*)dictionaryRepresentation;

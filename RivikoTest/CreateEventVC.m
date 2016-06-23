@@ -18,8 +18,8 @@
     
     NSDate                  *dateOfEvent;
     NSArray <UIImage*>      *eventImages;
-    NSNumber                *memberFee;
-    NSNumber                *guestFee;
+    NSString                *memberFee;
+    NSString                *guestFee;
 }
 
 @property (nonatomic, weak) IBOutlet UIScrollView       *scrollView;
@@ -66,7 +66,7 @@
     
     if ([event isValid]) {
         
-        [NetworkHelper addEvent:event completion:^(BOOL success, NSInteger eventId) {
+        [NetworkHelper addEvent:event completion:^(BOOL success, NSString *eventId) {
             
         }];
     }
@@ -238,8 +238,8 @@
     PricePickerView *ppView = (PricePickerView*)self.eventPayment.inputView;
     
     self.eventPayment.attributedText = [ppView priceDescription];
-    memberFee   = [NSNumber numberWithInteger:[ppView membersFeeValue]];
-    guestFee    = [NSNumber numberWithInteger:[ppView guestsFeeValue]];
+    memberFee   = [Utility descriptionForPrice:[ppView membersFeeValue]];
+    guestFee    = [Utility descriptionForPrice:[ppView guestsFeeValue]];
     
     [self.eventPayment resignFirstResponder];
 }
