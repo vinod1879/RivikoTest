@@ -217,6 +217,7 @@
 				TargetAttributes = {
 					0B9F6DB31D1727DE005124C2 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 9GPJN8C37M;
 					};
 				};
 			};
@@ -427,6 +428,7 @@
 			baseConfigurationReference = A9695CC7000D3AA6AA870395 /* Pods-RivikoTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RivikoTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LoneWolf.RivikoTest;
@@ -439,6 +441,7 @@
 			baseConfigurationReference = EDD435E94F6D93E70E4D8502 /* Pods-RivikoTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RivikoTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LoneWolf.RivikoTest;
